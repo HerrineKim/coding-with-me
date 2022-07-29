@@ -16,8 +16,6 @@ public class TestRegisterPostReq {
     @ApiModelProperty(name = "문항 수", example = "3")
     int testQno;
 
-    @ApiModelProperty(name="경로", example= "/path/..")
-    String testPath;
 
     @ApiModelProperty(name="테스트케이스",example= "[\n" +
             "        {\n" +

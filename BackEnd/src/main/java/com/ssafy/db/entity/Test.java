@@ -33,8 +33,8 @@ public class Test {
     @Column
     int testQno;
 
-    @Column
-    String testPath;
+//    @Column
+//    String testPath;
 
     @Column
     @Convert( converter = TestcaseJsonConverter.class)
@@ -42,6 +42,9 @@ public class Test {
     @JsonIgnore
     @OneToMany(mappedBy = "test")
     private List<TestRecord> testRecords = new ArrayList<>();
+
+    @OneToOne(mappedBy = "test")
+    Files files;
 
     public void addTestRecord(TestRecord record){
         this.testRecords.add(record);
