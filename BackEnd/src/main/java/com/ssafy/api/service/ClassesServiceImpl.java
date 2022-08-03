@@ -12,6 +12,9 @@ import com.ssafy.db.repository.ClassesRepository;
 import com.ssafy.db.repository.UserClassRepository;
 import com.ssafy.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,7 +49,7 @@ public class ClassesServiceImpl implements ClassesService {
         boolean success = false;
 
         try {
-            Classes classes = classesRepository.findByUserUserIdAndClassName(classesRegisterInfo.getTutorId(), classesRegisterInfo.getClassName()).get();
+            Classes classes = classesRepository.findFetchJoin(classesRegisterInfo.getTutorId(), classesRegisterInfo.getClassName()).get();
             classesRepository.delete(classes);
             success = true;
         }catch (Exception e){
@@ -62,7 +65,7 @@ public class ClassesServiceImpl implements ClassesService {
     @Transactional
     public boolean addStudent(ClassesAddStudentPostReq classesAddStudentPostReq) {
         try{
-            Classes classes = classesRepository.findByUserUserIdAndClassName(classesAddStudentPostReq.getTutorId(), classesAddStudentPostReq.getClassName()).get();
+            Classes classes = classesRepository.findFetchJoin(classesAddStudentPostReq.getTutorId(), classesAddStudentPostReq.getClassName()).get();
 
             UserClass uc = new UserClass();
 
@@ -83,7 +86,7 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     @Transactional
     public Classes modifyClass(ClassesModifyPostReq classesModifyPostReq) {
-        Classes classes = classesRepository.findByUserUserIdAndClassName(classesModifyPostReq.getTutorId(), classesModifyPostReq.getClassName()).get();
+        Classes classes = classesRepository.findFetchJoin(classesModifyPostReq.getTutorId(), classesModifyPostReq.getClassName()).get();
 
         classes.setClassName(classesModifyPostReq.getNewclassName());
         classes.setClassDescription(classesModifyPostReq.getClassDescription());
@@ -98,7 +101,7 @@ public class ClassesServiceImpl implements ClassesService {
 
         try {
             //User user = userRepository.findById(classesAddStudentPostReq.getStudentId()).get();
-            Classes classes = classesRepository.findByUserUserIdAndClassName(classesAddStudentPostReq.getTutorId(), classesAddStudentPostReq.getClassName()).get();
+            Classes classes = classesRepository.findFetchJoin(classesAddStudentPostReq.getTutorId(), classesAddStudentPostReq.getClassName()).get();
             User student = userRepository.findByUserId(classesAddStudentPostReq.getStudentId()).get();
 
             UserClass uc = userClassRepository.findByStudentId(student.getUserId()).get();
@@ -127,7 +130,8 @@ public class ClassesServiceImpl implements ClassesService {
     @Override
     @Transactional
     public List<UserClass> getClassesInfo(Long userid, String classname) {
-        Classes classes = classesRepository.findByUserUserIdAndClassName(userid,classname).get();
+
+        Classes classes = classesRepository.findFetchJoin(userid,classname).get();
 
         List<UserClass> uc =classes.getUserClassList();
 

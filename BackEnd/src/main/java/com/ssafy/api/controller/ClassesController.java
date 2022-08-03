@@ -15,6 +15,9 @@ import com.ssafy.db.repository.ClassesRepository;
 import com.ssafy.db.repository.UserRepository;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -149,6 +152,7 @@ public class ClassesController {
         List<UserClass> userClasses = classesService.getClassesInfo(userId, className);
 
         for (UserClass userClass : userClasses) {
+
             User user = userRepository.findByUserId(userClass.getStudentId()).get();
             userList.add(user);
         }

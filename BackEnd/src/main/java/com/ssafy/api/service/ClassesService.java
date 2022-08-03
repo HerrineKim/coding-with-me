@@ -6,6 +6,7 @@ import com.ssafy.api.request.ClassesModifyPostReq;
 import com.ssafy.api.request.ClassesRegisterPostReq;
 import com.ssafy.db.entity.Classes;
 import com.ssafy.db.entity.UserClass;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -28,6 +29,6 @@ public interface ClassesService {
 
     List<Classes> getAllClassesInfo(Long userid);
 
-    List<UserClass> getClassesInfo(Long userid,String classname);
+    List<UserClass> getClassesInfo(Long userid, String classname);
 
 }
