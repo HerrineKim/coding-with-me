@@ -1,26 +1,19 @@
 <template>
 	<div>
-		<q-input
-			v-model="password"
-			filled
-			color="brand"
-			bg-color="white"
+		<AtomBasicInput
 			label="PW"
 			placeholder="비밀번호를 입력해주세요"
-			type="password"
-		></q-input>
+		></AtomBasicInput>
 	</div>
 </template>
 
 <script>
-import { ref } from 'vue';
-
-// import AtomBasicInput from 'src/components/atoms/AtomBasicInput.vue';
+import AtomBasicInput from 'src/components/atoms/AtomBasicInput.vue';
 export default {
 	name: 'PWInput',
-	// components: { AtomBasicInput },
+	components: { AtomBasicInput },
 	setup() {
-		return { password: ref('') };
+		return {};
 	},
 };
 </script>

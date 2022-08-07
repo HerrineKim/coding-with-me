@@ -1,85 +1,48 @@
 <template>
 	<q-layout view="lHh Lpr lFf">
 		<q-header elevated>
-			<q-toolbar style="background-color: #00adb5">
+			<q-toolbar>
 				<TestComp @click="toggleLeftDrawer" flat></TestComp>
-				<router-link
-					:to="{ name: 'home' }"
-					style="text-decoration: none; color: inherit"
-				>
-					<q-toolbar-title style="font-family: 'OTWelcomeBA'; font-size: 20px">
-						코딩 수업을 더 쉽게, 코윗미</q-toolbar-title
-					></router-link
-				>
+				<!-- <q-toolbar-title> CowithMe 코윗미~ </q-toolbar-title> -->
 			</q-toolbar>
 		</q-header>
 
-		<q-drawer
-			v-model="leftDrawerOpen"
-			show-if-above
-			bordered
-			style="box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2)"
-		>
-			<div class="navbar" style="background-color: #eeeeee; height: 100vh">
+		<q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+			<div class="navbar" style="background-color: #d9d9d9; height: 100vh">
 				<div class="row">
 					<div class="col"></div>
 					<div class="col-10">
-						<router-link
-							:to="{ path: '/' }"
-							style="text-decoration: none; color: inherit"
-						>
-							<AtomLogo2 class="test" style="width: 90%"></AtomLogo2>
-						</router-link>
+						<AtomLogo2 style="width: 90%"></AtomLogo2>
 					</div>
 					<div class="col"></div>
-				</div>
-				<div class="row">
-					<div class="col-1"></div>
 				</div>
 				<div class="row">
 					<div class="col-1"></div>
 					<div class="col">
-						<div class="row">
-							<div
-								class="col-3"
-								style="font-size: 24px; font-family: 'OTWelcomeBA'"
-							>
-								{{ info2.name }}<span v-if="info2.role == '강사'">(강사)</span>
-							</div>
-							<div class="col-9">
-								<WelcomeText
-									style="font-size: 24px; font-family: 'OTWelcomeBA'"
-								></WelcomeText>
-							</div>
-						</div>
+						<ClassText></ClassText>
 					</div>
 				</div>
-				<div v-if="info2.role == '학생'" class="row">
-					<router-link
-						:to="{ name: 'studyRoom' }"
-						style="text-decoration: none; color: inherit"
-					>
-						<AtomSearchIconButton
-							style="font-size: 30px"
-						></AtomSearchIconButton>
-					</router-link>
+				<div class="row">
+					<div class="col-1"></div>
+					<div class="col">
+						<WelcomeText></WelcomeText>
+					</div>
 				</div>
-				<div v-if="info2.role == '학생'" class="row">
-					<router-link
-						:to="{ name: 'reportCard', params: { userId: info2.userId } }"
-						style="text-decoration: none; color: inherit"
-					>
-						<AtomScoreIconButton></AtomScoreIconButton>
-					</router-link>
+				<div class="row">
+					<AtomSearchIconButton></AtomSearchIconButton>
 				</div>
-				<div class="row" @click="goToMypage">
+				<div class="row">
+					<AtomScoreIconButton></AtomScoreIconButton>
+				</div>
+				<div class="row">
 					<AtomMyPageButton></AtomMyPageButton>
 				</div>
 				<div class="row fixed-bottom">
-					<AtomLogoutButton @click="goLogout"></AtomLogoutButton>
+					<AtomLogoutButton></AtomLogoutButton>
 				</div>
 			</div>
 		</q-drawer>
+
 		<q-page-container>
 			<router-view />
 		</q-page-container>
@@ -88,23 +51,70 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
+// import EssentialLink from 'components/EssentialLink.vue';
 import TestComp from 'src/components/TestComp.vue';
 import AtomLogo2 from 'src/components/atoms/AtomLogo2.vue';
 import WelcomeText from 'src/components/molecules/home/WelcomeText.vue';
+import ClassText from 'src/components/molecules/home/ClassText.vue';
 import AtomSearchIconButton from 'src/components/atoms/AtomSearchIconButton.vue';
 import AtomScoreIconButton from 'src/components/atoms/AtomScoreIconButton.vue';
 import AtomMyPageButton from 'src/components/atoms/AtomMyPageButton.vue';
 import AtomLogoutButton from 'src/components/atoms/AtomLogoutButton.vue';
-import { useRouter } from 'vue-router';
-// import { storeToRefs } from 'pinia';
-import { useAuthStore } from 'src/stores';
+
+// const linksList = [
+// 	{
+// 		title: 'Docs',
+// 		caption: 'quasar.dev',
+// 		icon: 'school',
+// 		link: 'https://quasar.dev',
+// 	},
+// 	{
+// 		title: 'Github',
+// 		caption: 'github.com/quasarframework',
+// 		icon: 'code',
+// 		link: 'https://github.com/quasarframework',
+// 	},
+// 	{
+// 		title: 'Discord Chat Channel',
+// 		caption: 'chat.quasar.dev',
+// 		icon: 'chat',
+// 		link: 'https://chat.quasar.dev',
+// 	},
+// 	{
+// 		title: 'Forum',
+// 		caption: 'forum.quasar.dev',
+// 		icon: 'record_voice_over',
+// 		link: 'https://forum.quasar.dev',
+// 	},
+// 	{
+// 		title: 'Twitter',
+// 		caption: '@quasarframework',
+// 		icon: 'rss_feed',
+// 		link: 'https://twitter.quasar.dev',
+// 	},
+// 	{
+// 		title: 'Facebook',
+// 		caption: '@QuasarFramework',
+// 		icon: 'public',
+// 		link: 'https://facebook.quasar.dev',
+// 	},
+// 	{
+// 		title: 'Quasar Awesome',
+// 		caption: 'Community Quasar projects',
+// 		icon: 'favorite',
+// 		link: 'https://awesome.quasar.dev',
+// 	},
+// ];
 
 export default defineComponent({
 	name: 'MainLayout',
+
 	components: {
+		// EssentialLink,
 		TestComp,
 		AtomLogo2,
 		WelcomeText,
+		ClassText,
 		AtomSearchIconButton,
 		AtomScoreIconButton,
 		AtomMyPageButton,
@@ -112,36 +122,11 @@ export default defineComponent({
 	},
 
 	setup() {
-		var user2 = null;
-		var info2 = null;
-		const user = localStorage.getItem('user');
-		const info = localStorage.getItem('info');
-		if (typeof user !== 'undefined') {
-			user2 = JSON.parse(user);
-		}
-		if (typeof info !== 'undefined') {
-			info2 = JSON.parse(info);
-		}
-		console.log(user2);
-		console.log(info2);
-
 		const leftDrawerOpen = ref(false);
-		const router = useRouter();
-		async function goToMypage() {
-			await router.push({ path: '/mypage' });
-		}
-
-		async function goLogout() {
-			const authStore = useAuthStore();
-			await authStore.logout();
-		}
 
 		return {
-			user2,
-			info2,
+			// essentialLinks: linksList,/
 			leftDrawerOpen,
-			goToMypage,
-			goLogout,
 			toggleLeftDrawer() {
 				leftDrawerOpen.value = !leftDrawerOpen.value;
 			},
@@ -149,17 +134,3 @@ export default defineComponent({
 	},
 });
 </script>
-
-<style>
-@font-face {
-	font-family: 'OTWelcomeBA';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2')
-		format('woff2');
-	font-weight: normal;
-	font-style: normal;
-}
-.test {
-	-webkit-filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.7));
-	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.7));
-}
-</style>

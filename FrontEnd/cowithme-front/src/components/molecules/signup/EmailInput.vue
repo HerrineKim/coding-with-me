@@ -1,25 +1,19 @@
 <template>
 	<div>
-		<q-input
-			v-model="email"
-			type="email"
+		<AtomBasicInput
 			label="Email"
 			placeholder="이메일을 입력해주세요"
-			filled
-			color="brand"
-			bg-color="white"
-		></q-input>
+		></AtomBasicInput>
 	</div>
 </template>
 
 <script>
-import { ref } from 'vue';
-// import AtomBasicInput from 'src/components/atoms/AtomBasicInput.vue';
+import AtomBasicInput from 'src/components/atoms/AtomBasicInput.vue';
 export default {
 	name: 'EmailInput',
-	// components: { AtomBasicInput },
+	components: { AtomBasicInput },
 	setup() {
-		return { email: ref('') };
+		return {};
 	},
 };
 </script>

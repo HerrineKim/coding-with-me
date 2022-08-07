@@ -1,133 +1,72 @@
-<script setup>
-import { ref } from 'vue';
-import { useAuthStore } from 'src/stores';
-import { useRouter } from 'vue-router';
-
-// import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
-
-const schema = Yup.object().shape({
-	id: Yup.string().required('id is required'),
-	password: Yup.string().required('Password is required'),
-});
-const id = ref('');
-const password = ref('');
-
-const router = useRouter();
-
-async function onSubmit() {
-	let idpw = {
-		id: id.value,
-		pw: password.value,
-	};
-	console.log(idpw.id, idpw.pw);
-	const authStore = useAuthStore();
-	await authStore.login(idpw.id, idpw.pw);
-	await router.push({ path: '/' });
-}
-// form 리셋 함수
-function onReset() {
-	id.value = null;
-	password.value = null;
-}
-</script>
-
 <template>
-	<div style="" class="q-pa-lg">
-		<div class="q-ma-lg">
-			<p class="col" style="font-size: 100px; color: white">Login</p>
-		</div>
-		<q-form
-			:validation-schema="schema"
-			@submit="onSubmit"
-			@reset="onReset"
-			class="q-gutter-md signup-form"
-			lazy-validation
-		>
-			<div class="flex row">
-				<div class="col q-mr-sm">
-					<q-input
-						name="password"
-						class="loginInput q-ma-lg q-pr-lg"
-						rounded
-						outlined
-						type="text"
-						v-model="id"
-						label="아이디"
-						lazy-rules
-						color="brand"
-						bg-color="white"
-					></q-input>
-
-					<q-input
-						name="password"
-						class="loginInput q-ma-lg q-pr-lg"
-						rounded
-						outlined
-						type="password"
-						v-model="password"
-						label="비밀번호"
-						lazy-rules
-						color="brand"
-						bg-color="white"
-					></q-input>
-					<div
-						class="q-ma-lg q-pr-lg"
-						style="margin-top: 100px; margin-left: 30px"
-					>
-						<q-btn
-							label="로그인"
-							type="submit"
-							text-color="white"
-							class=""
-							style="background: #00adb5"
-							push
-						></q-btn>
-						<router-link
-							:to="{ name: 'join' }"
-							style="text-decoration: none; color: inherit"
-						>
-							<q-btn
-								label="회원가입"
-								text-color="white"
-								style="background-color: #ff5722"
-								push
-								class="q-ml-sm"
-							></q-btn
-						></router-link>
-					</div>
-				</div>
+	<div class="right">
+		<div class="container">
+			<LoginText class="component"></LoginText>
+			<div class="form-container">
+				<IDInput class="component"></IDInput>
+				<PWInput class="component"></PWInput>
 			</div>
-		</q-form>
+			<FindIDPW class="find"></FindIDPW>
+			<LoginButton class="login-button"></LoginButton>
+			<SelectRoleButton class="role-button"></SelectRoleButton>
+		</div>
 	</div>
 </template>
 
-<style scoped>
-@font-face {
-	font-family: 'GmarketSansLight';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
+<script>
+import LoginText from 'src/components/molecules/login/LoginText.vue';
+import IDInput from 'src/components/molecules/login/IDInput.vue';
+import PWInput from 'src/components/molecules/login/PWInput.vue';
+import FindIDPW from 'src/components/molecules/login/FindIDPW.vue';
+import LoginButton from 'src/components/molecules/login/LoginButton.vue';
+import SelectRoleButton from 'src/components/molecules/login/SelectRoleButton.vue';
+
+export default {
+	name: 'RightForm',
+	setup() {
+		return {};
+	},
+	components: {
+		LoginText,
+		IDInput,
+		PWInput,
+		FindIDPW,
+		LoginButton,
+		SelectRoleButton,
+	},
+};
+</script>
+
+<style lang="scss" scoped>
+.right {
+	height: 800px;
+	width: 500px;
+	background-color: white;
 }
-.text-brand {
-	color: #00adb5 !important;
+
+.container {
+	margin-top: 100px;
+	margin-left: 50px;
 }
-.brand {
-	color: #00adb5 !important;
+
+.form-container {
+	margin-top: 50px;
+	margin-right: 50px;
 }
-.signup-form {
-	font-family: 'Elice Digital Baeum', sans-serif;
-	font-size: 18px;
+
+.component {
+	margin-bottom: 20px;
 }
-.role {
-	font-size: 16px !important;
-	font-family: 'GmarketSansLight' !important;
+
+.find {
+	margin-top: 20px;
 }
-.shadow {
-	box-shadow: 0 17px 20px -18px rgba(0, 0, 0, 1);
+
+.login-button {
+	margin-top: 50px;
 }
-.loginInput {
-	width: 50%;
+
+.role-button {
+	margin-top: 30px;
 }
 </style>

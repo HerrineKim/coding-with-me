@@ -14,7 +14,4 @@ export default {
 .text-brand {
 	color: #00adb5 !important;
 }
-.brand {
-	color: #00adb5 !important;
-}
 </style>
