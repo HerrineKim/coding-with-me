@@ -1,13 +1,11 @@
 <template>
-	<q-img :src="Logo2"></q-img>
+	<q-img src="src/assets/logo/logo2.svg"></q-img>
 </template>
 
 <script>
-// import { ref } from 'vue';
-import Logo2 from 'src/assets/logo/logo2.svg';
 export default {
 	setup() {
-		return { Logo2 };
+		return {};
 	},
 };
 </script>

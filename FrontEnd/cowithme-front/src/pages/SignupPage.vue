@@ -1,6 +1,6 @@
 <template>
-	<div class="signup flex">
-		<div class="signup-box row justify-center">
+	<div class="login flex">
+		<div class="login-box row justify-center">
 			<BaseSquare></BaseSquare>
 		</div>
 	</div>
@@ -18,13 +18,13 @@ export default {
 </script>
 
 <style>
-.signup {
+.login {
 	height: 100vh;
 	width: 100vw;
-	background-color: #eeeeee;
+	background-color: grey;
 }
 
-.signup-box {
+.login-box {
 	margin: auto;
 }
 </style>

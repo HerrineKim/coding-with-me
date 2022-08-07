@@ -2,20 +2,20 @@
 	<div class="login flex">
 		<div class="login-box row justify-center">
 			<LeftLogo></LeftLogo>
-			<RightPWForm></RightPWForm>
+			<RightIDForm></RightIDForm>
 		</div>
 	</div>
 </template>
 
 <script>
 import LeftLogo from 'src/components/organisms/find/LeftLogo.vue';
-import RightPWForm from 'src/components/organisms/find/RightPWForm.vue';
+import RightIDForm from 'src/components/organisms/find/RightIDForm.vue';
 export default {
-	name: 'PWFindPage',
+	name: 'IDFindPage',
 	setup() {
 		return {};
 	},
-	components: { LeftLogo, RightPWForm },
+	components: { LeftLogo, RightIDForm },
 };
 </script>
 
@@ -23,7 +23,7 @@ export default {
 .login {
 	height: 100vh;
 	width: 100vw;
-	background-color: #eeeeee;
+	background-color: grey;
 }
 
 .login-box {
