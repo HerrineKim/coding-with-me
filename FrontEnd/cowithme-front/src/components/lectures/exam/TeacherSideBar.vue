@@ -116,7 +116,11 @@
 				class="column justify-center"
 				style="height: 95vh; font-family: 'OTWelcomeBA'"
 			>
-				<q-scroll-area ref="chatting" class="col-10 q-pa-xl" style="width: 100%">
+				<q-scroll-area
+					ref="chatting"
+					class="col-10 q-pa-xl"
+					style="width: 100%"
+				>
 					<span
 						v-for="(chat, index) in piniaCommonVideoData.displayInfo.chatting"
 						:key="index"
@@ -213,10 +217,10 @@ export default {
 		const chatting = ref(undefined);
 		watch(piniaCommonVideoData.displayInfo.chatting, () => {
 			setTimeout(() => {
-				chatting.value.setScrollPercentage("vertical", 1);
+				chatting.value.setScrollPercentage('vertical', 1);
 				console.log(chatting.value.getScrollPercentage());
 			}, 500);
-		});	
+		});
 
 		return {
 			myChatInput,
@@ -226,7 +230,7 @@ export default {
 			piniaCommonExamData,
 			showOnline,
 			showSubmit,
-			chatting
+			chatting,
 		};
 	},
 };

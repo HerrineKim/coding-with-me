@@ -100,7 +100,7 @@ export const commonExamData = defineStore('commonExamData', () => {
 				},
 			],
 		];
-	}
+	};
 
 	return {
 		testID,

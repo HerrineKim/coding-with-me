@@ -5,16 +5,27 @@
 - **진행 기간 : 2022.07.08 ~ 2022.08.18 (5주)**
 - **목표**
   - 화상 수업, 강사-학생간 코드 전송, 코딩 테스트, 채팅 등 프로그래밍 수업에 필요한 기능들을 한 곳에 모은 프로그래밍 교육 서비스
+- **배포 링크**
+  - https://3.34.42.81:9000/
+
 
 
 
 ## 👯팀원 정보 및 업무 분담 내역
 
-김혜린(FE) - UI 설계, UI 디자인, 유저 관련 기능 개발, LMS 기능 개발
+강승길(FE, BE) - webRTC, web compiler 구현, 서버 개발
+
+김동욱(팀장, BE) - ERD 설계, 서버 개발
+
+김혜린(FE) - User & LMS 기능 개발, UI 설계, UI 구현
+
+이성민(BE) - ERD 설계, 서버 개발
+
+최태순(FE) - webRTC, UI 설계, UI 구현
 
 
 
-## :paperclip: 발표 자료 링크
+## :paperclip: 발표 자료
 
 https://drive.google.com/file/d/18LT0MX8mZmogb03t9eP4HJiSg1luOV0I/view?usp=sharing
 
@@ -26,9 +37,11 @@ https://drive.google.com/file/d/1k2rmB0Yzx4SGuA6UBA97MS54xq1HDmev/view?usp=shari
 
 
 
-## :video_camera: 광고 영상(링크 추후 추가)
+## :video_camera: 광고 영상
 
-![image-20220820221536834](README.assets/image-20220820221536834.png)
+https://drive.google.com/file/d/1-V-glNym-LMATyguBIpyaBFGU1gzE6C-/view?usp=sharing
+
+![image-20220820221536834](README.assets/image-20220820221536834-166297091872618.png)
 
 
 
@@ -36,65 +49,81 @@ https://drive.google.com/file/d/1k2rmB0Yzx4SGuA6UBA97MS54xq1HDmev/view?usp=shari
 
 ### 초기 화면
 
-![로그인](README.assets/%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif)
+![로그인](README.assets/%EB%A1%9C%EA%B7%B8%EC%9D%B8-166297091872619.gif)
 
 
 
 ### 학생 관리
 
-![학생 제거,추가](README.assets/%ED%95%99%EC%83%9D%20%EC%A0%9C%EA%B1%B0,%EC%B6%94%EA%B0%80.gif)
+![학생 제거,추가](README.assets/%ED%95%99%EC%83%9D%20%EC%A0%9C%EA%B1%B0,%EC%B6%94%EA%B0%80-166297091872620.gif)
 
 
 
 ### 시험 생성
 
-![시험 등록](README.assets/%EC%8B%9C%ED%97%98%20%EB%93%B1%EB%A1%9D.gif)
+![시험 등록](README.assets/%EC%8B%9C%ED%97%98%20%EB%93%B1%EB%A1%9D-166297091872624.gif)
 
 
 
 ### 강의 시작
 
-![강의 접속, 출결 확인](README.assets/%EA%B0%95%EC%9D%98%20%EC%A0%91%EC%86%8D,%20%EC%B6%9C%EA%B2%B0%20%ED%99%95%EC%9D%B8.gif)
+![강의 접속, 출결 확인](README.assets/%EA%B0%95%EC%9D%98%20%EC%A0%91%EC%86%8D,%20%EC%B6%9C%EA%B2%B0%20%ED%99%95%EC%9D%B8-166297091872621.gif)
 
 
 
 ### code 전송
 
-![코드 보내기](README.assets/%EC%BD%94%EB%93%9C%20%EB%B3%B4%EB%82%B4%EA%B8%B0.gif)
+![코드 보내기](README.assets/%EC%BD%94%EB%93%9C%20%EB%B3%B4%EB%82%B4%EA%B8%B0-166297091872622.gif)
 
 
 
 ### 코드 받아보기
 
-![코드 보내기 (1)](README.assets/%EC%BD%94%EB%93%9C%20%EB%B3%B4%EB%82%B4%EA%B8%B0%20(1).gif)
+![코드 보내기](README.assets/%EC%BD%94%EB%93%9C%20%EB%B3%B4%EB%82%B4%EA%B8%B0-16612210305399-166297091872623.gif)
 
 
 
 ### 시험 응시하기
 
-![문제 풀기, 제출하기](README.assets/%EB%AC%B8%EC%A0%9C%20%ED%92%80%EA%B8%B0,%20%EC%A0%9C%EC%B6%9C%ED%95%98%EA%B8%B0.gif)
+![문제 풀기, 제출하기](README.assets/%EB%AC%B8%EC%A0%9C%20%ED%92%80%EA%B8%B0,%20%EC%A0%9C%EC%B6%9C%ED%95%98%EA%B8%B0-166297091872625.gif)
 
 
 
-## :heart_decoration: 회고
+## 기술 스택
 
-### Keep
+![image-20220823113947380](README.assets/image-20220823113947380-166297091872626.png)
 
-- Vue3와 Quasar 프레임워크를 채택한 것이 처음에 우리팀 프론트엔드에 큰 부담이었고, 실제로 관련된 기술 학습과 오류 해결에만 초반 2주를 쏟았던 것 같다. 하지만 **조급함을 버리고 표준 기술을 학습해 결국 원하는 기능을 구현하는 끈기**가 우리 프로젝트의 완성도를 끌어올려주었고, **단기간 학습과 구현의 능력**을 끌어올려주는 경험이 되었다.
-- **Jira**와 **Mattermost**를 십분 활용해 팀원들과 일정을 공유하여 **투명한 의사소통과 일정관리**를 처음 체험해보았다. 팀원의 상태를 파악하고 문제가 생길 만한 부분은 신속하게 공유함으로써 시간을 효율적으로 활용하고 팀워크를 기를 수 있는 시간이었다.
+1. Sprint/Quasar (Vue) Server: AWS EC2 Ubuntu 20.04 LTS
+2. Openvidu Server: Oracle Cloud Ubuntu 20.04 LTS (Openvidu Server의 경우 ARM CPU 사용불가)
+3. Compiler Server: Oracle Cloud Ubuntu 20.04 LTS
+4. Mysql: 20.04.2
+5. Spring Boot: 2.4.5
+6. Quasar: 1.0.5
+7. Openvidu: 2.22.0
+8. Nginx: 1.18.0
+9. Node.js: 10.19.0
+10. java: 1.8.0
+11. gcc: 9.4.0
+12. g++: 9.4.0
+13. Python: 3.8.10
 
 
 
-### Problem
+## ERD
 
-- 기획 단계에서 세부적인 상황까지 의논하지 않았더니, 결국 BE 코드를 여러 번 수정해야 하는 경우가 발생했다. **기획자, FE, BE 간 기획단계에서의 소통**의 중요성을 깨달았고, 누구도 그 과정을 귀찮아하지 않고 미래의 부채를 줄이기 위한 노력을 해야 한다는 것을 느꼈다.
+![image-20220823111429633](README.assets/image-20220823111429633-166297091872627.png)
 
 
 
-### Try
+## 기능 정의서/API 명세서/테스트 시나리오
 
-- 새로운 기술 **React**와 관련 프레임워크 학습하기
-- 특화 프로젝트에서 팀장을 맡게 되었기 때문에, 기획 단계에서부터 세부 사항을 모든 팀원이 함께 합의하고, 팀의 원칙을 만들어가야겠다고 생각했다.
+https://docs.google.com/spreadsheets/d/1hJ3F-pyaeCHFWGd1NqcsIKce6SUxkpg3S4VU9M1ses4/edit?usp=sharing
+
+
+
+## 기획 자료(figma)
+
+https://www.figma.com/file/xYiCDWV2GYnX3pQCz61hbz/%EC%BD%94%EC%9C%97%EB%AF%B8-%EA%B8%B0%ED%9A%8D-by-A304?node-id=0%3A1
 
 
 

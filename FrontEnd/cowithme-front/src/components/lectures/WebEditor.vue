@@ -85,7 +85,7 @@ export default {
 
 		/**
 		 *  webEditor에 있는 코드를 pinia에 저장하는 코드
-		 * 
+		 *
 		 *  isMyEditor : true면 내 코드 저장, false면 강사 코드 저장
 		 */
 		const saveCode = isMyEditor => {
@@ -114,7 +114,7 @@ export default {
 			editorCode,
 			editorLanguage,
 			editorReadOnly,
-		
+
 			updateEditor,
 			saveCode,
 			updateCode,

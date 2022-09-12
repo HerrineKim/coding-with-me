@@ -112,12 +112,12 @@ export default {
 		const chatting = ref(undefined);
 		watch(piniaCommonVideoData.displayInfo.chatting, () => {
 			setTimeout(() => {
-				chatting.value.setScrollPercentage("vertical", 1)
+				chatting.value.setScrollPercentage('vertical', 1);
 			}, 300);
-		});		
+		});
 
 		// onUpdated(() => {
-		// 	
+		//
 		// 	console.log("change Length");
 		// });
 
